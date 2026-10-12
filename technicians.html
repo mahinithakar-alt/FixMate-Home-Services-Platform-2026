@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technicians — Super Admin</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="../assets/css/style.css" rel="stylesheet">
+<link href="../assets/css/admin.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+<div class="sidebar-backdrop" id="sbBackdrop"></div>
+<aside class="admin-sidebar" id="adminSidebar">
+  <div class="brand"><i class="bi bi-tools"></i> FixMate Admin</div>
+  <ul class="nav flex-column pb-3">
+    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+    <li class="nav-item"><a class="nav-link active" href="technicians.html"><i class="bi bi-people"></i> Technicians</a></li>
+    <li class="nav-item"><a class="nav-link" href="categories.html"><i class="bi bi-tags"></i> Categories</a></li>
+    <li class="nav-item"><a class="nav-link" href="services.html"><i class="bi bi-tools"></i> Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="bookings.html"><i class="bi bi-journal-text"></i> Bookings</a></li>
+    <li class="nav-item"><a class="nav-link" href="pricing.html"><i class="bi bi-cash-coin"></i> Pricing &amp; Payments</a></li>
+    <li class="nav-item"><a class="nav-link" href="reports.html"><i class="bi bi-graph-up"></i> Reviews &amp; Reports</a></li>
+    <li class="nav-item"><a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+    <li><hr class="border-secondary mx-3"></li>
+    <li class="nav-item"><a class="nav-link" href="#" id="logout-link"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+  </ul>
+</aside>
+
+<main class="admin-content">
+  <div class="admin-topbar d-flex align-items-center justify-content-between py-2 px-3 rounded mb-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-outline-secondary btn-sm d-lg-none" id="sb-toggle" aria-label="Toggle sidebar"><i class="bi bi-list"></i></button>
+      <h1 class="h5 mb-0 fw-semi">Technician Management</h1>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <div class="dropdown">
+        <button class="btn btn-light btn-sm border d-flex align-items-center gap-2" data-bs-toggle="dropdown"><span class="avatar-circle">SA</span><span class="d-none d-md-inline">Super Admin</span></button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="settings.html">Profile &amp; settings</a></li>
+          <li><a class="dropdown-item text-danger" href="#" id="logout-link-2">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-bar p-3 mb-4">
+    <div class="row g-2 align-items-end">
+      <div class="col-6 col-lg-3"><label class="form-label small" for="t-search">Search name / email</label><input id="t-search" class="form-control form-control-sm" type="search"></div>
+      <div class="col-6 col-lg-2"><label class="form-label small" for="t-cat">Category</label><select id="t-cat" class="form-select form-select-sm"><option value="">All</option></select></div>
+      <div class="col-6 col-lg-2"><label class="form-label small" for="t-area">Service area</label><select id="t-area" class="form-select form-select-sm"><option value="">All</option></select></div>
+      <div class="col-6 col-lg-2"><label class="form-label small" for="t-avail">Status</label><select id="t-avail" class="form-select form-select-sm"><option value="">All</option><option value="active">Active</option><option value="pending">Pending</option><option value="suspended">Suspended</option></select></div>
+      <div class="col-6 col-lg-2"><label class="form-label small" for="t-ver">Verification</label><select id="t-ver" class="form-select form-select-sm"><option value="">All</option><option value="verified">Verified</option><option value="pending">Pending</option><option value="rejected">Rejected</option></select></div>
+      <div class="col-6 col-lg-1"><label class="form-label small" for="t-sort">Sort</label><select id="t-sort" class="form-select form-select-sm"><option value="name">Name</option><option value="rating">Rating</option><option value="jobs">Jobs</option></select></div>
+      <div class="col-6 col-lg-3"><button id="t-clear" class="btn btn-sm btn-outline-secondary w-100">Clear filters</button></div>
+      <div class="col-6 col-lg-3"><button id="add-tech-btn" class="btn btn-sm btn-navy w-100"><i class="bi bi-plus-lg"></i> Add Technician</button></div>
+    </div>
+  </div>
+
+  <div class="card p-3">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead><tr><th>Technician</th><th>Category</th><th>Service areas</th><th>Status</th><th>Rating</th><th>Completed jobs</th><th class="text-end">Actions</th></tr></thead>
+        <tbody id="tech-table-body"></tbody>
+      </table>
+    </div>
+    <div id="tech-pager" class="d-flex align-items-center"></div>
+  </div>
+</main>
+
+<!-- Details modal -->
+<div class="modal fade" id="techDetailsModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title">Technician details</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body" id="td-body"></div>
+  <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button></div>
+</div></div></div>
+
+<!-- Add/Edit modal -->
+<div class="modal fade" id="techFormModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="tf-title">Add Technician</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+  <div class="modal-body">
+    <form id="tf-form" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label required" for="tf-name">Full name</label><input id="tf-name" class="form-control"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-phone">Phone number</label><input id="tf-phone" class="form-control" type="tel"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-email">Email</label><input id="tf-email" class="form-control" type="email"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-cat">Service category</label><select id="tf-cat" class="form-select"><option value="">Choose…</option></select><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-skills">Skills</label><input id="tf-skills" class="form-control" placeholder="e.g. Wiring, Fittings"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-exp">Experience</label><input id="tf-exp" class="form-control" placeholder="e.g. 4 years"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-areas">Service areas (comma-separated)</label><input id="tf-areas" class="form-control" placeholder="Downtown, Riverside"></div>
+        <div class="col-md-6"><label class="form-label required" for="tf-hours">Working hours</label><input id="tf-hours" class="form-control" placeholder="09:00 - 18:00"><div class="invalid-feedback"></div></div>
+        <div class="col-md-6"><label class="form-label" for="tf-photo">Profile photo (JPG/PNG/WebP, max 2 MB)</label><input id="tf-photo" class="form-control" type="file" accept="image/jpeg,image/png,image/webp"><img id="tf-preview" class="upload-preview mt-2 d-none" alt="Photo preview"></div>
+        <div class="col-md-6"><label class="form-label" for="tf-ver">Verification status</label><select id="tf-ver" class="form-select"><option value="pending">Pending</option><option value="verified">Verified</option><option value="rejected">Rejected</option></select></div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" id="tf-save">Save technician</button></div>
+</div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script>document.getElementById('logout-link-2')?.addEventListener('click',e=>{e.preventDefault();window.HSP.logout();});</script>
+</body>
+</html>

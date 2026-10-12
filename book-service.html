@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a service — FixMate Home Services</title>
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg hsp-navbar sticky-top" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html"><img src="assets/images/logo.svg" alt="FixMate logo" class="logo-img"><span class="brand-wrap"><span class="brand-script">FixMate</span><small class="nav-tagline d-none d-xl-block">Connecting You with the Right Service Professionals</small></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="book-service.html">Book a Service</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-brand btn-sm px-3" href="login.html">Sign in</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="section-pad">
+  <div class="container">
+    <h1 class="h3 fw-bold">Book a service</h1>
+    <p class="text-muted">Fields marked <span class="text-danger">*</span> are required. This is a frontend demo — your booking is stored in this browser only.</p>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <form id="booking-form" class="card p-4" novalidate>
+          <h5 class="fw-semi mb-3">Your details</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label required" for="b-name">Full name</label>
+              <input id="b-name" class="form-control" type="text" autocomplete="name">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label required" for="b-phone">Mobile number</label>
+              <input id="b-phone" class="form-control" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="b-email">Email (optional)</label>
+              <input id="b-email" class="form-control" type="email" autocomplete="email">
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+
+          <h5 class="fw-semi mt-4 mb-3">Service</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label required" for="b-category">Service category</label>
+              <select id="b-category" class="form-select"><option value="">Choose a category…</option></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label required" for="b-service">Service</label>
+              <select id="b-service" class="form-select"><option value="">Choose a service…</option></select>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+
+          <h5 class="fw-semi mt-4 mb-3">Where &amp; when</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label required" for="b-address">Service address</label>
+              <input id="b-address" class="form-control" type="text" placeholder="Street, building, apartment">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label required" for="b-city">City / area</label>
+              <input id="b-city" class="form-control" type="text" placeholder="e.g. Downtown">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label required" for="b-date">Preferred date</label>
+              <input id="b-date" class="form-control" type="date">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label required" for="b-slot">Preferred time slot</label>
+              <select id="b-slot" class="form-select"><option value="">Choose a slot…</option></select>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+
+          <h5 class="fw-semi mt-4 mb-3">Problem details</h5>
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label required" for="b-notes">Problem description</label>
+              <textarea id="b-notes" class="form-control" rows="3" placeholder="Describe the issue so the technician can prepare."></textarea>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="b-image">Photo (optional — JPG/PNG/WebP, max 2 MB)</label>
+              <input id="b-image" class="form-control" type="file" accept="image/jpeg,image/png,image/webp">
+              <div id="b-image-error" class="text-danger small d-none"></div>
+              <img id="b-image-preview" class="upload-preview mt-2 d-none" alt="Uploaded photo preview">
+            </div>
+          </div>
+
+          <div class="alert alert-light border mt-4" id="b-estimate"><span class="text-muted">Select a service to see the estimated price.</span></div>
+          <div class="small text-muted mb-3">
+            <i class="bi bi-info-circle"></i> Cancellation: free up to 2 hours before the appointment; later cancellations may incur a visit fee. Bookings need at least 2 hours notice.
+          </div>
+          <button type="submit" class="btn btn-brand btn-lg"><i class="bi bi-calendar-check"></i> Submit booking</button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <div class="card p-4">
+          <h6 class="fw-semi"><i class="bi bi-shield-check"></i> What happens next</h6>
+          <ol class="small text-muted ps-3">
+            <li>We create a unique booking ID instantly.</li>
+            <li>The Super Admin reviews and assigns a technician.</li>
+            <li>The technician keeps the status updated until completion.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hsp-footer py-4">
+  <div class="container"><p class="small mb-0">© 2026 FixMate Home Services — frontend demo.</p></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/customer.js"></script>
+</body>
+</html>

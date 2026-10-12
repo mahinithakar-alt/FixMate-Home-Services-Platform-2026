@@ -1,0 +1,28 @@
+/* Super Admin panel layout */
+.admin-body { min-height: 100vh; background: var(--hsp-bg); }
+.admin-sidebar { width: 250px; min-height: 100vh; background: var(--hsp-navy-dark); color: #cfd8e6; position: fixed; top: 0; left: 0; z-index: 1040; overflow-y: auto; transition: transform .2s ease; }
+.admin-sidebar .brand { color: #fff; font-weight: 700; padding: 1rem 1.25rem; display: flex; align-items: center; gap: .5rem; }
+.admin-sidebar .brand .bi { color: var(--hsp-accent); }
+.admin-sidebar .nav-link { color: #cfd8e6; padding: .6rem 1.25rem; display: flex; align-items: center; gap: .6rem; border-left: 3px solid transparent; }
+.admin-sidebar .nav-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+.admin-sidebar .nav-link.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--hsp-accent); }
+.admin-content { margin-left: 250px; padding: 1.5rem 2rem 3rem; }
+.admin-topbar { background: #fff; border-bottom: 1px solid var(--hsp-border); position: sticky; top: 0; z-index: 1030; }
+.admin-topbar .notification-dot { position: absolute; top: 6px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: #dc3545; }
+.avatar-circle { width: 36px; height: 36px; border-radius: 50%; background: var(--hsp-accent-soft); color: var(--hsp-navy); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.stat-card { border-left: 4px solid var(--hsp-navy); }
+.stat-card.accent { border-left-color: var(--hsp-accent); }
+.stat-card.success { border-left-color: #198754; }
+.stat-card.danger { border-left-color: #dc3545; }
+.stat-card.info { border-left-color: #0dcaf0; }
+.stat-card.warning { border-left-color: #ffc107; }
+.stat-card .stat-value { font-size: 1.6rem; font-weight: 700; color: var(--hsp-navy); }
+.filter-bar { background: #fff; border: 1px solid var(--hsp-border); border-radius: .75rem; }
+.sidebar-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 1035; display: none; }
+@media (max-width: 991.98px) {
+  .admin-sidebar { transform: translateX(-100%); }
+  .admin-sidebar.show { transform: translateX(0); }
+  .admin-content { margin-left: 0; padding: 1rem; }
+  .sidebar-backdrop.show { display: block; }
+}
+.avatar-sm { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; background: var(--hsp-accent-soft); color: var(--hsp-navy); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews &amp; Reports — Super Admin</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="../assets/css/style.css" rel="stylesheet">
+<link href="../assets/css/admin.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+<div class="sidebar-backdrop" id="sbBackdrop"></div>
+<aside class="admin-sidebar" id="adminSidebar">
+  <div class="brand"><i class="bi bi-tools"></i> FixMate Admin</div>
+  <ul class="nav flex-column pb-3">
+    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+    <li class="nav-item"><a class="nav-link" href="technicians.html"><i class="bi bi-people"></i> Technicians</a></li>
+    <li class="nav-item"><a class="nav-link" href="categories.html"><i class="bi bi-tags"></i> Categories</a></li>
+    <li class="nav-item"><a class="nav-link" href="services.html"><i class="bi bi-tools"></i> Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="bookings.html"><i class="bi bi-journal-text"></i> Bookings</a></li>
+    <li class="nav-item"><a class="nav-link" href="pricing.html"><i class="bi bi-cash-coin"></i> Pricing &amp; Payments</a></li>
+    <li class="nav-item"><a class="nav-link active" href="reports.html"><i class="bi bi-graph-up"></i> Reviews &amp; Reports</a></li>
+    <li class="nav-item"><a class="nav-link" href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+    <li><hr class="border-secondary mx-3"></li>
+    <li class="nav-item"><a class="nav-link" href="#" id="logout-link"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+  </ul>
+</aside>
+
+<main class="admin-content" id="reports-tabs">
+  <div class="admin-topbar d-flex align-items-center justify-content-between py-2 px-3 rounded mb-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-outline-secondary btn-sm d-lg-none" id="sb-toggle" aria-label="Toggle sidebar"><i class="bi bi-list"></i></button>
+      <h1 class="h5 mb-0 fw-semi">Reviews &amp; Reports</h1>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <div class="dropdown">
+        <button class="btn btn-light btn-sm border d-flex align-items-center gap-2" data-bs-toggle="dropdown"><span class="avatar-circle">SA</span><span class="d-none d-md-inline">Super Admin</span></button>
+        <ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item text-danger" href="#" id="logout-link-2">Logout</a></li></ul>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs mb-4" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-reviews" type="button" role="tab"><i class="bi bi-star"></i> Reviews</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-reports" type="button" role="tab"><i class="bi bi-file-earmark-bar-graph"></i> Reports</button></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="tab-reviews" role="tabpanel">
+      <div id="rev-list"></div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-reports" role="tabpanel">
+      <div class="filter-bar p-3 mb-4">
+        <div class="row g-2 align-items-end">
+          <div class="col-6 col-lg-3"><label class="form-label small" for="rep-from">Report from</label><input type="date" id="rep-from" class="form-control form-control-sm"></div>
+          <div class="col-6 col-lg-3"><label class="form-label small" for="rep-to">Report to</label><input type="date" id="rep-to" class="form-control form-control-sm"></div>
+        </div>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-2"><h6 class="fw-semi mb-0">Bookings report</h6><button class="btn btn-sm btn-outline-primary" id="exp-bookings"><i class="bi bi-download"></i> CSV</button></div>
+        <div class="table-responsive"><table class="table table-sm" id="rep-bookings"></table></div>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-2"><h6 class="fw-semi mb-0">Service-category report</h6><button class="btn btn-sm btn-outline-primary" id="exp-cats"><i class="bi bi-download"></i> CSV</button></div>
+        <div class="table-responsive"><table class="table table-sm" id="rep-cats"></table></div>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-2"><h6 class="fw-semi mb-0">Technician performance report</h6><button class="btn btn-sm btn-outline-primary" id="exp-techs"><i class="bi bi-download"></i> CSV</button></div>
+        <div class="table-responsive"><table class="table table-sm" id="rep-techs"></table></div>
+      </div>
+
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2"><h6 class="fw-semi mb-0">Revenue report (sample)</h6><button class="btn btn-sm btn-outline-primary" id="exp-revenue"><i class="bi bi-download"></i> CSV</button></div>
+        <div class="table-responsive"><table class="table table-sm" id="rep-revenue"></table></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script>document.getElementById('logout-link-2')?.addEventListener('click',e=>{e.preventDefault();window.HSP.logout();});</script>
+</body>
+</html>

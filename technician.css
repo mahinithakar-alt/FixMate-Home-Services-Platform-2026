@@ -1,0 +1,20 @@
+/* Technician panel layout */
+.tech-body { min-height: 100vh; background: var(--hsp-bg); }
+.tech-sidebar { width: 240px; min-height: 100vh; background: #123a2e; color: #cfe4db; position: fixed; top: 0; left: 0; z-index: 1040; overflow-y: auto; transition: transform .2s ease; }
+.tech-sidebar .brand { color: #fff; font-weight: 700; padding: 1rem 1.25rem; display: flex; align-items: center; gap: .5rem; }
+.tech-sidebar .brand .bi { color: #6ee7b7; }
+.tech-sidebar .nav-link { color: #cfe4db; padding: .6rem 1.25rem; display: flex; align-items: center; gap: .6rem; border-left: 3px solid transparent; }
+.tech-sidebar .nav-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+.tech-sidebar .nav-link.active { color: #fff; background: rgba(255,255,255,.08); border-left-color: #6ee7b7; }
+.tech-content { margin-left: 240px; padding: 1.5rem 2rem 3rem; }
+.tech-topbar { background: #fff; border-bottom: 1px solid var(--hsp-border); position: sticky; top: 0; z-index: 1030; }
+.alert-job { border-left: 4px solid var(--hsp-accent); }
+.slot-chip { border: 1px solid var(--hsp-border); border-radius: 2rem; padding: .3rem .9rem; display: inline-block; margin: .2rem; background: #fff; }
+.slot-chip.selected { background: var(--hsp-navy); color: #fff; border-color: var(--hsp-navy); }
+.day-chip { border: 1px solid var(--hsp-border); border-radius: 2rem; padding: .3rem .9rem; display: inline-block; margin: .2rem; background: #fff; }
+.day-chip.selected { background: #0f6e4f; color: #fff; border-color: #0f6e4f; }
+@media (max-width: 991.98px) {
+  .tech-sidebar { transform: translateX(-100%); }
+  .tech-sidebar.show { transform: translateX(0); }
+  .tech-content { margin-left: 0; padding: 1rem; }
+}

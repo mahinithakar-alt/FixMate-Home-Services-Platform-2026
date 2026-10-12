@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home — FixMate Home Services</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg hsp-navbar sticky-top" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html"><img src="assets/images/logo.svg" alt="FixMate logo" class="logo-img"><span class="brand-wrap"><span class="brand-script">FixMate</span><small class="nav-tagline d-none d-xl-block">Connecting You with the Right Service Professionals</small></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-brand btn-sm px-3" href="book-service.html">Book a Service</a></li>
+        <li class="nav-item dropdown ms-lg-2">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i> Sign in</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="login.html?role=admin">Super Admin Login</a></li>
+            <li><a class="dropdown-item" href="login.html?role=technician">Technician Login</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hsp-hero py-5">
+  <div class="container py-4">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <p class="hero-tagline mb-1">Connecting You with the Right Service Professionals.</p>
+        <h1 class="display-5 fw-bold">Trusted local professionals, booked in minutes</h1>
+        <p class="lead mb-4">Carpenters, plumbers, electricians, AC technicians, car care and more — at your doorstep.</p>
+        <form id="hero-search-form" class="d-flex gap-2 flex-wrap" role="search">
+          <input id="hero-search" class="form-control form-control-lg" style="max-width:340px" type="search" placeholder="Search a service, e.g. plumber" aria-label="Search services">
+          <button class="btn btn-brand btn-lg" type="submit"><i class="bi bi-search"></i> Search</button>
+          <a class="btn btn-outline-light btn-lg" href="book-service.html">Book a Service</a>
+        </form>
+      </div>
+      <div class="col-lg-5 text-center d-none d-lg-block">
+        <i class="bi bi-house-gear" style="font-size:9rem; opacity:.5"></i>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section-pad intro-video-section bg-white" id="intro-video">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-5">
+        <p class="hero-tagline mb-1">Meet FixMate</p>
+        <h2 class="h2 fw-bold mb-3">Home services, made simple</h2>
+        <p class="text-muted mb-3">From plumbing and electrical repairs to cleaning, AC servicing, and vehicle care, FixMate helps you find the right service for everyday needs.</p>
+        <a class="btn btn-brand" href="book-service.html">Book a Service</a>
+      </div>
+      <div class="col-lg-7">
+        <div class="video-slot overflow-hidden">
+          <video class="w-100 d-block" controls preload="metadata" poster="assets/images/video-poster.svg" aria-label="FixMate website introduction video">
+            <source src="assets/videos/fixmate-intro.mp4" type="video/mp4">
+            Your browser does not support HTML video. Please open the video in a modern browser.
+          </video>
+        </div>
+        <p class="small text-muted mt-2 mb-0">A short introduction to FixMate and how service booking works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad bg-white">
+  <div class="container">
+    <h2 class="h4 fw-bold mb-1">Browse service categories</h2>
+    <p class="text-muted mb-4">Pick a category to see available services and prices.</p>
+    <div class="row g-3" id="home-categories"></div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <h2 class="h4 fw-bold mb-1">Popular services</h2>
+    <p class="text-muted mb-4">Most requested services this month (sample data).</p>
+    <div class="row g-3" id="popular-services">
+      <div class="col-6 col-md-3"><div class="skeleton"></div></div>
+      <div class="col-6 col-md-3"><div class="skeleton"></div></div>
+      <div class="col-6 col-md-3"><div class="skeleton"></div></div>
+      <div class="col-6 col-md-3"><div class="skeleton"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad bg-white" id="how-it-works">
+  <div class="container">
+    <h2 class="h4 fw-bold mb-4 text-center">How It Works</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-4"><span class="step-num mb-3">1</span><h6 class="fw-semi">Choose a service</h6><p class="text-muted small">Browse categories and select the service you need, or search for it.</p></div>
+      <div class="col-md-4"><span class="step-num mb-3">2</span><h6 class="fw-semi">Pick a time &amp; place</h6><p class="text-muted small">Tell us your address and preferred date and time slot.</p></div>
+      <div class="col-md-4"><span class="step-num mb-3">3</span><h6 class="fw-semi">A pro completes the job</h6><p class="text-muted small">We assign a verified technician who keeps you updated until completion.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="why-us">
+  <div class="container">
+    <h2 class="h4 fw-bold mb-4 text-center">Why Choose Us</h2>
+    <div class="row g-4">
+      <div class="col-md-3 text-center"><div class="icon-tile mx-auto mb-2"><i class="bi bi-shield-check"></i></div><h6 class="fw-semi">Verified technicians</h6><p class="small text-muted">Every technician is identity-checked and approved by our admin team.</p></div>
+      <div class="col-md-3 text-center"><div class="icon-tile mx-auto mb-2"><i class="bi bi-cash-coin"></i></div><h6 class="fw-semi">Transparent pricing</h6><p class="small text-muted">Fixed prices shown upfront; quote-based jobs are agreed before work starts.</p></div>
+      <div class="col-md-3 text-center"><div class="icon-tile mx-auto mb-2"><i class="bi bi-clock-history"></i></div><h6 class="fw-semi">On-time slots</h6><p class="small text-muted">Choose a time slot that suits you — no waiting around all day.</p></div>
+      <div class="col-md-3 text-center"><div class="icon-tile mx-auto mb-2"><i class="bi bi-star"></i></div><h6 class="fw-semi">Rated &amp; reviewed</h6><p class="small text-muted">Real ratings keep quality high and help you pick with confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad bg-white" id="reviews">
+  <div class="container">
+    <h2 class="h4 fw-bold mb-1">What customers say</h2>
+    <p class="text-muted mb-4">Sample reviews shown for demo purposes.</p>
+    <div class="row g-3" id="review-section"></div>
+  </div>
+</section>
+
+<footer class="hsp-footer py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h6><i class="bi bi-tools"></i> FixMate</h6>
+        <p class="small">Connecting homes with trusted service professionals. Demo frontend prototype.</p>
+        <p class="small mb-0"><i class="bi bi-geo-alt"></i> 42 Market Street, Downtown<br>
+        <i class="bi bi-telephone"></i> +1 (555) 012-3456<br>
+        <i class="bi bi-envelope"></i> support@fixmate.demo</p>
+      </div>
+      <div class="col-md-3">
+        <h6>Navigation</h6>
+        <ul class="list-unstyled small">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book-service.html">Book a Service</a></li>
+          <li><a href="login.html">Panel Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <h6>Service categories</h6>
+        <div id="footer-cats" class="small"></div>
+      </div>
+    </div>
+    <hr class="border-secondary">
+    <p class="small mb-0">© 2026 FixMate Home Services — frontend demo. Booking data is stored in your browser only.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/customer.js"></script>
+<script>
+  // Footer category links (reuses loaded db)
+  (function(){const db=window.HSP.loadDb();document.getElementById('footer-cats').innerHTML=db.categories.filter(c=>c.active).map(c=>'<a href="services.html?cat='+c.id+'" class="d-inline-block me-3 mb-1">'+window.HSP.esc(c.name)+'</a>').join('');})();
+</script>
+</body>
+</html>
